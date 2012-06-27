@@ -1,5 +1,5 @@
 /**
- * jQuery Pub/Sub plugin for Loosely Coupled logic.
+ * Underscore Pub/Sub plugin for Loosely Coupled logic.
  *
  * Based on Hiroshi Kuwabara's jQuery version of Peter Higgins' port 
  * from Dojo to JQuery.
@@ -13,7 +13,7 @@
  * Perfomance enhanced version based on Luís Couto
  * https://github.com/phiggins42/bloody-jquery-plugins/blob/55e41df9bf08f42378bb08b93efcb28555b61aeb/pubsub.js
  */
-(function($) {
+(function(_) {
     "use strict";
     var cache = {},
     /**
@@ -85,8 +85,8 @@
         }
     };
 
-    $.publish = publish;
-    $.subscribe = subscribe;
-    $.unsubscribe = unsubscribe;
+    _.publish = publish;
+    _.subscribe = subscribe;
+    _.unsubscribe = unsubscribe;
 
-}(jQuery));
+}(underscore));

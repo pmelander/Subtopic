@@ -1,5 +1,5 @@
 /**
- * jQuery Pub/Sub plugin for Loosely Coupled logic.
+ * Pub/Sub for Loosely Coupled logic.
  *
  * Based on Hiroshi Kuwabara's jQuery version of Peter Higgins' port 
  * from Dojo to JQuery.
@@ -13,7 +13,7 @@
  * Perfomance enhanced version based on Luís Couto
  * https://github.com/phiggins42/bloody-jquery-plugins/blob/55e41df9bf08f42378bb08b93efcb28555b61aeb/pubsub.js
  */
-(function($) {
+var subtopic = (function() {
     "use strict";
     var cache = {},
     /**
@@ -84,9 +84,11 @@
             }
         }
     };
+	
+	return {
+		publish: publish,
+		subscribe: subscribe,
+		unsubscribe: unsubscribe
+	};
 
-    $.publish = publish;
-    $.subscribe = subscribe;
-    $.unsubscribe = unsubscribe;
-
-}(jQuery));
+}());
