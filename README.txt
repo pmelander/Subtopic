@@ -1,3 +1,26 @@
-Subtopic is a topic-based PubSub system for javascript. Originally based on Peter Higgins' port from Dojo to JQuery and updated with support for message chaining inspired by Morgan Roderik's PubSubJS.
+Subtopic provides topic-based PubSub for javascript. Originally based on Peter Higgins' port from Dojo to JQuery and updated with support for message chaining inspired by Morgan Roderik's PubSubJS.
 
-I will release Subtopic in vanilla-script as well as plugins for Underscore and JQuery.
+Vanilla javascrip:
+subtopic.subscribe(topic, callback);
+subtopic.unsubscribe(topic);
+subtopic.publish(topic, [payload]);
+
+Underscore:
+_.subscribe(topic, callback);
+_.unsubscribe(topic);
+_.publish(topic, [payload]);
+
+jQuery:
+$.subscribe(topic, callback);
+$.unsubscribe(topic);
+$.publish(topic, [payload]);
+
+To use topic chaining divide your topics using forward slashes e.g. /app/region/module/event
+A subscriber will execute the callback function for the subscribed topic and any sub-topics.
+
+The following publications will each invoke the callback for a subscription to /app/region:
+_.publish("/app/region", []);
+_.publish("/app/region/module", []);
+_.publish("/app/region/module/event", []);
+
+
