@@ -24,4 +24,4 @@ _.publish("/app/region/module", []);
 _.publish("/app/region/module/event", []);
 
 Check out the official performance comparison here:
-http://jsperf.com/pubsubjs-vs-jquery-custom-events/41
+http://jsperf.com/pubsubjs-vs-jquery-custom-events/50
