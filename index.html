@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Subtopic : Topic-based Javascript PubSub for vanilla, jQuery and Underscore" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Subtopic</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/pmelander/Subtopic">View on GitHub</a>
+
+          <h1 id="project_title">Subtopic</h1>
+          <h2 id="project_tagline">Topic-based Javascript PubSub for vanilla, jQuery and Underscore</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/pmelander/Subtopic/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/pmelander/Subtopic/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>Subtopic provides topic-based PubSub for javascript. Originally based on Peter Higgins' port from Dojo to JQuery and updated with support for message chaining inspired by Morgan Roderik's PubSubJS.</p>
+
+<h3>Vanilla javascrip:</h3>
+
+<p>NuGet here: <a href="http://nuget.org/packages/Subtopic.js">http://nuget.org/packages/Subtopic.js</a></p>
+
+<div class="highlight"><pre><span class="nx">subtopic</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
+<span class="nx">subtopic</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">(</span><span class="nx">topic</span><span class="p">)</span>
+<span class="nx">subtopic</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="p">[</span><span class="nx">payload</span><span class="p">])</span>
+</pre></div>
+
+<h3>Underscore:</h3>
+
+<p>NuGet here: <a href="http://nuget.org/packages/Underscore-Subtopic.js">http://nuget.org/packages/Underscore-Subtopic.js</a></p>
+
+<div class="highlight"><pre><span class="nx">_</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">(</span><span class="nx">topic</span><span class="p">)</span>
+<span class="nx">_</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="p">[</span><span class="nx">payload</span><span class="p">])</span>
+</pre></div>
+
+<h3>jQuery:</h3>
+
+<p>NuGet: <a href="http://nuget.org/packages/JQuery-Subtopic.js">http://nuget.org/packages/JQuery-Subtopic.js</a></p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="nx">callback</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">unsubscribe</span><span class="p">(</span><span class="nx">topic</span><span class="p">)</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="nx">topic</span><span class="p">,</span> <span class="p">[</span><span class="nx">payload</span><span class="p">])</span>
+</pre></div>
+
+<h3>Performance</h3>
+
+<p>Check out the official performance comparison here:</p>
+
+<p><a href="http://jsperf.com/pubsubjs-vs-jquery-custom-events/51">http://jsperf.com/pubsubjs-vs-jquery-custom-events/51</a></p>
+
+<h3>Topic chaining</h3>
+
+<p>To use topic chaining divide your topics using forward slashes e.g. <strong>app/region/module/event</strong>. A subscriber will execute the callback function for the subscribed topic and any sub-topics.</p>
+
+<p>The following publications will each invoke the callback for a subscription to <strong>app/region</strong>:</p>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">"app/region"</span><span class="p">,</span> <span class="p">[])</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">"app/region/module"</span><span class="p">,</span> <span class="p">[])</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">"app/region/module/event"</span><span class="p">,</span> <span class="p">[])</span>
+</pre></div>
+
+<p>If you do NOT require topic chaining I would recommend using Peter Higgins´ port from Dojo here: <a href="https://github.com/phiggins42/bloody-jquery-plugins">https://github.com/phiggins42/bloody-jquery-plugins</a></p>
+
+<h3>Examples</h3>
+
+<div class="highlight"><pre><span class="nx">$</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">"app/region"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"Sub to app/region: "</span> <span class="o">+</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">.</span><span class="nx">subscribe</span><span class="p">(</span><span class="s2">"app"</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="s2">"Sub to app: "</span> <span class="o">+</span> <span class="nx">arguments</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+    <span class="p">});</span>
+
+    <span class="nx">$</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">"app/region/module"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Pub in module"</span><span class="p">,</span> <span class="s2">"arg2"</span><span class="p">]);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">"app/region"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Pub in region"</span><span class="p">,</span> <span class="s2">"arg2"</span><span class="p">]);</span>
+    <span class="nx">$</span><span class="p">.</span><span class="nx">publish</span><span class="p">(</span><span class="s2">"app"</span><span class="p">,</span> <span class="p">[</span><span class="s2">"Pub in app"</span><span class="p">,</span> <span class="s2">"arg2"</span><span class="p">]);</span>
+<span class="p">});</span><span class="err">​</span>
+</pre></div>
+
+<p>JsFiddle here: <a href="http://jsfiddle.net/P8dQs/3/">http://jsfiddle.net/P8dQs/3/</a></p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Subtopic maintained by <a href="https://github.com/pmelander">pmelander</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
