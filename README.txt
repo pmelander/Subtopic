@@ -22,10 +22,10 @@ Check out the official performance comparison here:
 http://jsperf.com/pubsubjs-vs-jquery-custom-events/50
 
 Topic chaining:
-To use topic chaining divide your topics using forward slashes e.g. /app/region/module/event
+To use topic chaining divide your topics using forward slashes e.g. app/region/module/event
 A subscriber will execute the callback function for the subscribed topic and any sub-topics.
 
-The following publications will each invoke the callback for a subscription to /app/region:
+The following publications will each invoke the callback for a subscription to app/region:
 _.publish("app/region", []);
 _.publish("app/region/module", []);
 _.publish("app/region/module/event", []);
