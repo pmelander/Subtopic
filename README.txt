@@ -1,4 +1,4 @@
-Subtopic provides topic-based PubSub for javascript. Originally based on Peter Higgins' port from Dojo to JQuery and updated with support for message chaining inspired by Morgan Roderik's PubSubJS.
+Subtopic provides topic-based PubSub for javascript. Originally based on Peter Higgins' port from Dojo to JQuery and updated with support for message chaining inspired by Morgan Roderick's PubSubJS.
 
 Full documentation here: http://pmelander.github.com/Subtopic/
 
